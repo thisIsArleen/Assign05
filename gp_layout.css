@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 7th Edition
+   Tutorial 5
+   Case Problem 1
+   
+   Author: Arleen Bautista
+   Date:  June 14, 2022     
+   
+   Filename: gp_layout.css
+
+   This file contains the layout styles and media
+   queries used with sample pages from the Golden
+   Pulps website.
+
+*/
+/*6. Go to the gp_layout.css file in your editor. In this style sheet, you’ll create the layout styles
+for mobile and desktop devices. Note that Devan has used the @import rule to import the
+gp_designs.css file, which contains several graphical and typographical style rules.*/
+
+/* Import Basic Design Styles Used on All Screens */
+
+@import url("gp_designs.css");
+
+
+
+/* Flex Layout Styles */
+
+/*7. Go to the Flex Layout Styles section and insert a style rule to display the body element as a
+flexbox oriented as rows with wrapping.*/
+
+/*8. The page body content has two main elements. The section element with the ID sheet contains
+the panels from the comic book page. The article element contains information about the
+comic book industry during the Golden Age. Devan wants more of the page width to be
+given to the comic book sheet. Add a style rule that sets the flex growth and shrink rate of the
+section#sheet selector to 3 and 1 respectively and set its flex basis size to 301 pixels.*/
+
+body {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+section#sheet {
+    flex: 3 1 301px;
+}
+
+/* 9. Less page width will be given to the article element. Create a style rule to set its flex growth
+and shrink values to 1 and 3 respectively and set its flex basis size to 180 pixels.*/
+
+article {
+    flex: 1 3 180px;
+}
+
+
+
+/* ============================================
+	Mobile Devices: 0 - 480 pixels
+   ============================================
+*/
+/*10. Go to the Mobile Devices section and create a media query for screen devices with a maximum
+width of 480 pixels.*/
+
+@media only screen and (max-width: 480px) {
+
+    /*11. With mobile devices, Devan wants each comic book panel image to occupy a single row. Create a
+style rule that sets the width of img elements belonging to the panel class to 100%.*/
+
+    img.panel {
+        width: 100%;
+    }
+
+    /*12. For mobile devices, Devan wants the horizontal navigation links to other pages on the Golden
+Pulps website to be displayed near the bottom of the page. Within the media query, set the flex
+order of the nav.horizontal selector to 99.*/
+
+    nav.horizontal {
+        order: 99;
+    }
+
+    /*13. Create a style rule to set the flex order of the body > footer selector to 100.*/
+    body>footer {
+        order: 100;
+    }
+}
+
+/* ===================================================
+	Tablet and Desktop Devices: Greater than 480 pixels
+   ===================================================
+*/
+/*14. Go to the Tablet and Desktop Devices: Greater than 480 pixels section and create a media query
+that matches screen devices with widths greater than 480 pixels.*/
+
+@media only screen and (min-width: 481px) {
+    /* 15. For tablet and desktop devices, you’ll lay out the horizontal navigation list as a single row of
+    links. Within the media query, create a style rule for the nav.horizontal ul selector that displays
+    that element as a flexbox, oriented in the row direction with no wrapping. Set the height of the
+    element to 40 pixels.*/
+
+    nav.horizontal ul {
+        display: flex;
+        flex-flow: row nowrap;
+        height: 40px;
+    }
+
+    /*16. For the nav.horizontal ul li selector set the flex growth shrink, and basis size values to 1, 1, and
+auto respectively so that each list items grows and shrinks at the same rate.*/
+
+    nav.horizontal ul li {
+        display: flex;
+        flex: 1 1 auto;
+    }
+
+    /* 17. With wider screens, Devan does not want the panels to occupy their own rows as is the case
+with mobile devices. Instead, within the media query create style rules, define the width of the
+different classes of comic book panel images as follows:
+
+    /* a. Set the width of size1 img elements to 100%. */
+    img.panel.size1 {
+        width: 100%;
+    }
+
+    /* b. Set the width of size2 img elements to 60%. */
+    img.panel.size2 {
+        width: 60%;
+    }
+
+    /* c. Set the width of size3 img elements to 40%. */
+    img.panel.size3 {
+        width: 40%;
+    }
+
+    /* d. Set the width of size4 img elements to 30%. */
+
+    img.panel.size4 {
+        width: 30%;
+    }
+
+}
